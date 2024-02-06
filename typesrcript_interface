@@ -42,3 +42,53 @@ interface Player extends User {
 const aa : Player = {
     name : "asd"
 }
+
+
+//////////////////
+
+interface User {
+    firstName:string,
+    lastName:string ,
+
+    sayHi(name:string):string
+    fullName():string    
+}
+
+interface Human {
+    health:number
+}
+
+class Player implements User, Human {
+    constructor(
+        public firstName:string,
+        public lastName:string,
+        public health:number
+    ){}
+
+    sayHi(name:string){
+        return `${name}`
+    }
+
+    fullName(){
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+function makeUser(user:User){}
+
+function makeUserReturnUser(user:User):User{
+    return({
+        firstName:"aaa",
+        lastName:"bbb",
+        sayHi : (name) => "xxx",
+        fullName : () => "string"
+    })
+}
+
+
+makeUser({
+    firstName:"aaa",
+    lastName:"bbb",
+    sayHi : (name) => "xxx",
+    fullName : () => "string"
+})
