@@ -1,0 +1,33 @@
+interface IStorage<T>{
+    [key:string] : T
+}
+
+class LocalStorage<T>{
+    private storage:IStorage<T> = {}
+    set(key:string, value:T){
+        if(this.storage[key] === undefined){
+            this.storage[key] = value;
+        }else{
+            throw new Error("has been already key")
+        }
+    }
+    remove(key:string){
+        delete this.storage[key]
+    }
+    get(key:string):T{
+        return this.storage[key]
+    }
+    clear(){
+        this.storage = {}
+    }
+}
+
+const stringStorage = new LocalStorage<string>()
+
+stringStorage.get("key")
+stringStorage.set("hello", "hello")
+
+const boolStorage = new LocalStorage<boolean>();
+
+boolStorage.get("xxx")
+boolStorage.set("key",false)
