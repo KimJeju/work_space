@@ -1,0 +1,44 @@
+type NickName = string
+type HealthBar = number
+
+type Player = {
+    nickname:NickName,
+    healthBar:HealthBar
+}
+
+const aa:Player = {
+    nickname : "aa",
+    healthBar : 10
+}
+
+
+type Food = string;
+
+const kimchi:Food = "good"
+
+type Team = "red" | "blue" | "yello"
+type Health = 1 | 5 | 10
+
+interface Player  {
+    nickname:string,
+    team:Team
+    health : Health
+}
+
+const p :Player = {
+    nickname:"asd",
+    team:"red",
+    health : 1
+}
+
+interface User {
+    name : string
+}
+
+interface Player extends User {
+
+}
+
+const aa : Player = {
+    name : "asd"
+}
