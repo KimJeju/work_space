@@ -1,0 +1,37 @@
+type Words ={
+    [key:string]:string
+}
+
+class Word {
+    constructor(
+        public term:string,
+        public def:string,
+    ){}
+}
+
+class Dict{
+    private words:Words
+    constructor(){
+        this.words = {}
+    }
+
+    add(word:Word){
+        if(this.words[word.term] === undefined){
+            this.words[word.term] = word.def;
+        }
+    }
+
+    def(term:string){
+        console.log(this.words[term])
+        return this.words[term]
+    }
+}
+
+
+
+const kimchi = new Word("kimchi","korea foot")
+
+const dict = new Dict()
+
+dict.add(kimchi);
+dict.def("kimchi")
