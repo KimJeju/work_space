@@ -92,3 +92,51 @@ makeUser({
     sayHi : (name) => "xxx",
     fullName : () => "string"
 })
+
+//////////////////////
+타입과 인터페이스
+
+// type PlayerA = {
+//     name:string
+// }
+
+// type PlayerAA = PlayerA & {
+//     job:string
+// }
+
+// type Alias = 1 | 2 | 3
+
+// const player : PlayerAA= {
+//     name : "aaaa",
+//     job : "bbb"
+// }
+
+// interface IPlayer {
+//     name:string
+// }
+// interface IPlayerB extends IPlayer {
+//     job:string
+// }
+
+// interface IPlayerB {
+//     health:number
+// }
+// const playerB : IPlayerB = {
+//     name: "aaaaa",
+//     job:"asdb",
+//     health:1
+// }
+
+type PlayerA = {
+    firstName:string
+}
+
+interface PlayerB{
+    firstName:string
+}
+
+class User implements PlayerB {
+    constructor(
+        public firstName:string
+    ){}
+}
