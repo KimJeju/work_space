@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="415a07f9-063a-4758-b37b-ec9e489fdc5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/fine_tuning_chatbot/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fine_tuning_chatbot/signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chatbot_server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot_server/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot_server/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot_server/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,25 +34,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Django Server.chatbot_server.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/kimkunhwi/Documents/Projects/work_space/chat_bot/chatbot_server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Django Server.chatbot_server.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kimkunhwi/Documents/Projects/work_space/chat_bot/chatbot_server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="chatbot_server" type="Python.DjangoServer" factoryName="Django server">
       <module name="chatbot_server" />
@@ -94,7 +97,8 @@
       <updated>1707818793752</updated>
       <workItem from="1707818794758" duration="4279000" />
       <workItem from="1707903340985" duration="6858000" />
-      <workItem from="1708426899698" duration="2069000" />
+      <workItem from="1708426899698" duration="4568000" />
+      <workItem from="1708440937974" duration="1421000" />
     </task>
     <servers />
   </component>

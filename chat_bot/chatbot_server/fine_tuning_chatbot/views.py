@@ -1,15 +1,19 @@
-from django.views import View
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from django.conf import settings
+from django.core.files.storage import  default_storage
+
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+
+from .models import FineTunedModel,TrainingData
+from .serializers import FineTunedModelSerializer,TrainingDataSerializer
 
 
-# Create your views here.
-@api_view(['GET'])
-def hello_world(request):
-    return Response("welcome django ")
+class FineTunedModelViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    queryset = FineTunedModel.objects.all()
+    serializer_class = FineTunedModelSerializer
 
-@api_view(['GET'])
-class HelloWorldView(View):
-    def get(self, request):
-        return Response("hello is cbv")
+class TrainingDataViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    queryset = TrainingData.objects.all()
+    serializer_class = TrainingDataSerializer
