@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="415a07f9-063a-4758-b37b-ec9e489fdc5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../django_test/test_project/templates/drf-yasg/redoc-old.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../django_test/test_project/templates/drf-yasg/redoc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../django_test/test_project/templates/drf-yasg/swagger-ui.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4177a6d7-3829-4cf5-a757-9dca98e904ad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4177a6d7-3829-4cf5-a757-9dca98e904ad.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../django_test/test_project/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../django_test/test_project/test_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/test_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../django_test/test_project/test_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/test_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../django_test/test_project/myapp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/myapp/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../django_test/test_project/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

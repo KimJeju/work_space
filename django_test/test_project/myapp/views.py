@@ -21,6 +21,7 @@ from .serializsers import BookSerializer
 #     return render(request, 'myapp/create_book.html', {'form' : form})
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def create_book(request):
     serializer = BookSerializer(data=request.data)
     if serializer.is_valid():
