@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="415a07f9-063a-4758-b37b-ec9e489fdc5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../django_test/test_project/myapp/serializsers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../django_test/test_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../django_test/test_project/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../django_test/test_project/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/myapp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../django_test/test_project/test_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/test_project/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../django_test/test_project/test_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../django_test/test_project/test_project/urls.py" afterDir="false" />
@@ -93,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1707818793752</updated>
       <workItem from="1707818794758" duration="4279000" />
-      <workItem from="1707903340985" duration="6259000" />
+      <workItem from="1707903340985" duration="6858000" />
     </task>
     <servers />
   </component>
