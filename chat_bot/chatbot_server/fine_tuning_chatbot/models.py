@@ -14,7 +14,8 @@ class FineTunedModel(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fine_tuned_models', null=True)
     file_id = models.CharField(max_length=200, null=True, blank=True)
-    fine_tuned_id = models.CharField(max_length=200, null=True, blank=True)
+    fine_tune_id = models.CharField(max_length=200, null=True, blank=True)
+    fine_tuned_model = models.CharField(max_length=200, null=True, blank=True)
     status = models.CharField(max_length=50, null=True, blank=True)
     def __str__(self):
         return self.model_name
@@ -26,7 +27,6 @@ class TrainingData(models.Model):
     is_fine_tuned = models.BooleanField(default=False)
     will_be_fine_tuned = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='training_datas', null=True)
-
 
     def __str__(self):
         return f'{self.fine_tuned_model.model_name}의 훈련 데이터'
