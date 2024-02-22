@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken',  # 이 부분 추가
+    'rest_framework.authtoken',  # 토큰 인증
 
     'fine_tuning_chatbot',
 

@@ -100,9 +100,9 @@ def create_finetune(request, finetuned_model_id):
         finetuned_model = FineTunedModel.objects.get(id=finetuned_model_id)
 
         openai.api_key = settings.OPENAI_API_KEY
-        result = openai.FineTune.create(
-            model=finetuned_model.base_model,
-            training_file=finetuned_model.file_id,
+        result = openai.FineTuningJob.create(
+            training_file="file-A68HKkIwJHLiE3fBS3VHd0Qu",
+            model="gpt-3.5-turbo-1106",
         )
 
         finetuned_model.fine_tune_id = result['id']

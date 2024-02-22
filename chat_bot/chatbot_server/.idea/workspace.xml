@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="415a07f9-063a-4758-b37b-ec9e489fdc5c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot_server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot_server/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fine_tuned_model_2.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +96,7 @@
       <workItem from="1707903340985" duration="6858000" />
       <workItem from="1708426899698" duration="4568000" />
       <workItem from="1708440937974" duration="4670000" />
-      <workItem from="1708490318832" duration="1709000" />
+      <workItem from="1708490318832" duration="7589000" />
     </task>
     <servers />
   </component>
