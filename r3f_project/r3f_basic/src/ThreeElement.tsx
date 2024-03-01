@@ -18,7 +18,7 @@ export default function ThreeElement(){
         // console.log(delta)
 
         // console.log(boxRef)
-        boxRef.current.rotation.x += delta // 랜더링 시간 값을 더해서 뱅뱅 도는 효과를 줌
+        // boxRef.current.rotation.x += delta // 랜더링 시간 값을 더해서 뱅뱅 도는 효과를 줌
         // boxRef.current.position.y -= 0.01; // 0.01 만큼 매초다가 올라감
         // boxRef.current.scale.z += 0.01; // 가로로 늘어남
     })
