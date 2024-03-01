@@ -16,7 +16,8 @@ module.exports = {
     ],
     "@typescript-eslint/no-explicit-any": "off", // Unexpected any. Specify a different type 문구 제거
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error"
-
+      "@typescript-eslint/no-unused-vars": [
+        "warn"
+      ]
   },
 }

@@ -1,13 +1,20 @@
-import * as Three from 'three'
+import * as THREE from 'three'
 import { useThree, useFrame } from '@react-three/fiber'
 import { useRef } from 'react';
+// import { useControls } from 'leva';
 
-export default function ThreeElement(){
+export default function ThreeElement() {
 
     const { size, gl, scene, camera } = useThree();
 
     // useRef 를 통해 box의 레퍼런스를 기억해둔다
     const boxRef = useRef<THREE.Mesh>(null);
+    const groupRef = useRef<THREE.Group>(null);
+
+    //박스 돌리기
+    // const box = useControls({
+    //     retation : {value : 0, min: -360, max:360, step:1}
+    // })
 
 
     // 옛날 3GS에서 사용하던 mesh 추가법
@@ -25,35 +32,90 @@ export default function ThreeElement(){
         // console.log(delta)
 
         // console.log(boxRef)
-        // boxRef.current.rotation.x += delta // 랜더링 시간 값을 더해서 뱅뱅 도는 효과를 줌
-        // boxRef.current.position.y -= 0.01; // 0.01 만큼 매초다가 올라감
-        // boxRef.current.scale.z += 0.01; // 가로로 늘어남
+        // boxRef.current.position.x += 0.01 // 랜더링 시간 값을 더해서 뱅뱅 도는 효과를 줌
+        // boxRef.current.rotation.x -= 0.01; // 0.01 만큼 매초다가 올라감
+        // boxRef.current.scale.x += 0.01; // 가로로 늘어남
+
+        // scene.position.x += 0.01
+
+        groupRef.current.rotation.x += delta;
     })
 
-    return(
+    // 최상위 월드 => scene
+    // scene.rotation.x =  THREE.MathUtils.degToRad(45)
+
+    return (
         <>
             {/* 빛 관련 부분 */}
-            <directionalLight position={[5,5,5]} />
+            <directionalLight position={[5, 5, 5]} />
 
-             {/* 박스 메터리얼 */}
-             {/* Three util을 사용해 회전값을 라디안 -> 디그리 변환 */}
-             {/*
+            {/* 박스 메터리얼 */}
+            {/* Three util을 사용해 회전값을 라디안 -> 디그리 변환 */}
+            {/*
                 mesh : geometry 와 metarial 이 합쳐진 구현체 
                 mesh 의 구성요소 
                 - geometry : 구성요소의 모양 
                 - metarial : 구성요소의 색깔
 
              */}
-            <mesh 
-                ref={boxRef}
-                rotation={
-                [Three.MathUtils.degToRad(45),
-                Three.MathUtils.degToRad(45),
-                0]
-            }>
-                <boxGeometry />
-                <meshStandardMaterial color="red"/>
-            </mesh>
+            <group
+                ref={groupRef}
+                position={[0,0,0]}
+                rotation={[
+                    THREE.MathUtils.degToRad(0),
+                    THREE.MathUtils.degToRad(45),
+                    THREE.MathUtils.degToRad(0),
+                ]}
+            >
+                <axesHelper args={[5]}/>
+
+
+                <mesh
+                    ref={boxRef}
+                    position={[0, 0, 0]} // mesh 위치변경 x,y,z
+                    // position-x={[5]} 축 하나씩 이동
+                    scale={[1, 1, 1]} //크기변경 x,y,z
+                    rotation={[
+                        THREE.MathUtils.degToRad(0),
+                        THREE.MathUtils.degToRad(0),
+                        THREE.MathUtils.degToRad(0),
+                    ]}
+                >
+                    <boxGeometry />
+                    <meshStandardMaterial color="red" />
+                </mesh>
+
+                <mesh
+                    ref={boxRef}
+                    position={[2, 0, 0]} // mesh 위치변경 x,y,z
+                    // position-x={[5]} 축 하나씩 이동
+                    scale={[1, 1, 1]} //크기변경 x,y,z
+                    rotation={[
+                        THREE.MathUtils.degToRad(0),
+                        THREE.MathUtils.degToRad(45),
+                        THREE.MathUtils.degToRad(45),
+                    ]}
+                >
+                    <boxGeometry />
+                    <meshStandardMaterial color="blue" />
+                    <axesHelper args={[3]}/>
+                </mesh>
+
+                <mesh
+                    ref={boxRef}
+                    position={[0, 2, 0]} // mesh 위치변경 x,y,z
+                    // position-x={[5]} 축 하나씩 이동
+                    scale={[1, 1, 1]} //크기변경 x,y,z
+                    rotation={[
+                        THREE.MathUtils.degToRad(0),
+                        THREE.MathUtils.degToRad(0),
+                        THREE.MathUtils.degToRad(0),
+                    ]}
+                >
+                    <boxGeometry />
+                    <meshStandardMaterial color="green" />
+                </mesh>
+            </group>
         </>
     )
 }
