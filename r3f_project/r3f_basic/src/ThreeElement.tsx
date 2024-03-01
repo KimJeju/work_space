@@ -51,7 +51,7 @@ export default function ThreeElement(){
                 Three.MathUtils.degToRad(45),
                 0]
             }>
-                <sphereGeometry />
+                <boxGeometry />
                 <meshStandardMaterial color="red"/>
             </mesh>
         </>
