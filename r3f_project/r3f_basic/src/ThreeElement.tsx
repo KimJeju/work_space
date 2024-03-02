@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { useThree, useFrame } from '@react-three/fiber'
 import { useRef } from 'react';
+import { Box, Sphere, Cone } from '@react-three/drei'
 // import { useControls } from 'leva';
 
 export default function ThreeElement() {
@@ -38,7 +39,7 @@ export default function ThreeElement() {
 
         // scene.position.x += 0.01
 
-        groupRef.current.rotation.x += delta;
+        // groupRef.current.rotation.x += delta;
     })
 
     // 최상위 월드 => scene
@@ -58,64 +59,49 @@ export default function ThreeElement() {
                 - metarial : 구성요소의 색깔
 
              */}
-            <group
-                ref={groupRef}
-                position={[0,0,0]}
-                rotation={[
-                    THREE.MathUtils.degToRad(0),
-                    THREE.MathUtils.degToRad(45),
-                    THREE.MathUtils.degToRad(0),
-                ]}
-            >
-                <axesHelper args={[5]}/>
 
+              {/* 지오메트리를 불러오는 세가지 방법
+              1. drei  사용
+                <Box position={[-2,0,0]}>
+                    <meshStandardMaterial color="green" />
+                </Box>
 
-                <mesh
+               2. 파라미터로 지정
+                <mesh geometry={new THREE.BoxGeometry(1,1,1)}>
+                    <meshStandardMaterial color="blue"/>
+                </mesh>
+
+                3. mesh 안에 선언
+                  <mesh
                     ref={boxRef}
-                    position={[0, 0, 0]} // mesh 위치변경 x,y,z
+                    position={[2, 0, 0]} // mesh 위치변경 x,y,z
                     // position-x={[5]} 축 하나씩 이동
-                    scale={[1, 1, 1]} //크기변경 x,y,z
-                    rotation={[
-                        THREE.MathUtils.degToRad(0),
-                        THREE.MathUtils.degToRad(0),
-                        THREE.MathUtils.degToRad(0),
-                    ]}
+                    // scale={[1, 1, 1]} //크기변경 x,y,z
+                    // rotation={[
+                    //     THREE.MathUtils.degToRad(0),
+                    //     THREE.MathUtils.degToRad(0),
+                    //     THREE.MathUtils.degToRad(0),
+                    // ]}
                 >
                     <boxGeometry />
                     <meshStandardMaterial color="red" />
                 </mesh>
-
+                 */}
+    
                 <mesh
                     ref={boxRef}
                     position={[2, 0, 0]} // mesh 위치변경 x,y,z
                     // position-x={[5]} 축 하나씩 이동
-                    scale={[1, 1, 1]} //크기변경 x,y,z
-                    rotation={[
-                        THREE.MathUtils.degToRad(0),
-                        THREE.MathUtils.degToRad(45),
-                        THREE.MathUtils.degToRad(45),
-                    ]}
+                    // scale={[1, 1, 1]} //크기변경 x,y,z
+                    // rotation={[
+                    //     THREE.MathUtils.degToRad(0),
+                    //     THREE.MathUtils.degToRad(0),
+                    //     THREE.MathUtils.degToRad(0),
+                    // ]}
                 >
                     <boxGeometry />
-                    <meshStandardMaterial color="blue" />
-                    <axesHelper args={[3]}/>
+                    <meshStandardMaterial color="red" />
                 </mesh>
-
-                <mesh
-                    ref={boxRef}
-                    position={[0, 2, 0]} // mesh 위치변경 x,y,z
-                    // position-x={[5]} 축 하나씩 이동
-                    scale={[1, 1, 1]} //크기변경 x,y,z
-                    rotation={[
-                        THREE.MathUtils.degToRad(0),
-                        THREE.MathUtils.degToRad(0),
-                        THREE.MathUtils.degToRad(0),
-                    ]}
-                >
-                    <boxGeometry />
-                    <meshStandardMaterial color="green" />
-                </mesh>
-            </group>
         </>
     )
 }
