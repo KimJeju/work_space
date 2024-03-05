@@ -1,8 +1,7 @@
 import * as THREE from 'three'
 import { useThree, useFrame } from '@react-three/fiber'
-import { useRef } from 'react';
-import { Box, Sphere, Cone } from '@react-three/drei'
-// import { useControls } from 'leva';
+import { useRef, useEffect} from 'react';
+import { useControls } from 'leva';
 
 export default function ThreeElement() {
 
@@ -10,7 +9,16 @@ export default function ThreeElement() {
 
     // useRef 를 통해 box의 레퍼런스를 기억해둔다
     const boxRef = useRef<THREE.Mesh>(null);
+    const boxCopyRef = useRef<THREE.Mesh>(null);
     const groupRef = useRef<THREE.Group>(null);
+    const boxControl = useControls({
+        width : { value:1, min:0.1, max:10, step:0.1},
+        height :{ value:1, min:0.1, max:10, step:0.1},
+        depth :{ value:1, min:0.1, max:10, step:0.1},
+        widthSeg :{ value:1, min:1, max:10, step:1},
+        heightSeg :{ value:1, min:1, max:10, step:1},
+        depthSeg :{ value:1, min:1, max:10, step:1},
+    })
 
     //박스 돌리기
     // const box = useControls({
@@ -44,6 +52,11 @@ export default function ThreeElement() {
 
     // 최상위 월드 => scene
     // scene.rotation.x =  THREE.MathUtils.degToRad(45)
+
+    useEffect(() => {
+        boxCopyRef.current.geometry = boxRef.current.geometry
+    }, [boxControl])
+
 
     return (
         <>
@@ -87,10 +100,12 @@ export default function ThreeElement() {
                     <meshStandardMaterial color="red" />
                 </mesh>
                  */}
-    
+
+
+                {/* 와이어프레임 생성 */}
                 <mesh
                     ref={boxRef}
-                    position={[2, 0, 0]} // mesh 위치변경 x,y,z
+                    position={[0, 0, 0]} // mesh 위치변경 x,y,z
                     // position-x={[5]} 축 하나씩 이동
                     // scale={[1, 1, 1]} //크기변경 x,y,z
                     // rotation={[
@@ -99,7 +114,20 @@ export default function ThreeElement() {
                     //     THREE.MathUtils.degToRad(0),
                     // ]}
                 >
-                    <boxGeometry />
+                    <boxGeometry args={[
+                        boxControl.width, 
+                        boxControl.height,
+                        boxControl.depth,
+                        boxControl.widthSeg,
+                        boxControl.heightSeg,
+                        boxControl.depthSeg
+                        ]}/>
+                    <meshStandardMaterial wireframe/>
+                </mesh>
+
+                <mesh
+                    ref={boxCopyRef}
+                >
                     <meshStandardMaterial color="red" />
                 </mesh>
         </>

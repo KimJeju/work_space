@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="415a07f9-063a-4758-b37b-ec9e489fdc5c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatbot_server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot_server/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fine_tuned_model_2.jsonl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fine_tuning_chatbot/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fine_tuning_chatbot/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="415a07f9-063a-4758-b37b-ec9e489fdc5c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,6 +90,7 @@
       <workItem from="1708426899698" duration="4568000" />
       <workItem from="1708440937974" duration="4670000" />
       <workItem from="1708490318832" duration="8122000" />
+      <workItem from="1709529280423" duration="6000" />
     </task>
     <servers />
   </component>
