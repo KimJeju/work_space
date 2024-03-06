@@ -1,66 +1,172 @@
 import * as THREE from 'three'
-import { useThree, useFrame } from '@react-three/fiber'
-import { useRef, useEffect} from 'react';
-import { useControls } from 'leva';
+import { useFrame } from '@react-three/fiber'
+import { useEffect, useRef } from 'react';
 
 
 export default function ThreeElement() {
 
-    const { size, gl, scene, camera } = useThree();
 
-    // useRef 를 통해 box의 레퍼런스를 기억해둔다
-    const boxRef = useRef<THREE.Mesh>(null);
-    const boxCopyRef = useRef<THREE.Mesh>(null);
+    const meshRef = useRef<THREE.Mesh>(null);
     const groupRef = useRef<THREE.Group>(null);
-    const boxControl = useControls({
-        radius : { value:1, min:0.1, max:10, step:0.1},
-        segments :{ value:32, min:1, max:100, step:1},
-        thetaStart :{ value:0, min:0, max:360, step:0.1},
-        thetaLength :{ value:360, min:0, max:360, step:0.1},
+    // const meshCopyRef1 = useRef<THREE.Mesh>(null);
+    // const meshCopyRef2 = useRef<THREE.Mesh>(null);
+
+
+    useFrame((state, delta) => {
+        for(let i = 0; i < groupRef.current!.children.length; ++i){
+            const mesh =  groupRef.current!.children[i] as THREE.Mesh;
+            mesh.geometry = meshRef.current!.geometry;
+            mesh.position.x= i * 2;
+        }
     })
 
-    // 최상위 월드 => scene
-    // scene.rotation.x =  THREE.MathUtils.degToRad(45)
-
     useEffect(() => {
-        boxCopyRef.current.geometry = boxRef.current.geometry
-    }, [boxControl])
+        // meshCopyRef1.current!.geometry = meshRef.current!.geometry
+        // meshCopyRef2.current!.geometry = meshRef.current!.geometry
+    }, [meshRef])
 
 
     return (
         <>
             {/* 빛 관련 부분 */}
-            <directionalLight position={[5, 5, 5]} />
-                <mesh
-                    ref={boxRef}
-                    position={[0, 0, 0]} // mesh 위치변경 x,y,z
-                    // position-x={[5]} 축 하나씩 이동
-                    // scale={[1, 1, 1]} //크기변경 x,y,z
-                    // rotation={[
-                    //     THREE.MathUtils.degToRad(0),
-                    //     THREE.MathUtils.degToRad(0),
-                    //     THREE.MathUtils.degToRad(0),
-                    // ]}
-                >
-                    <circleGeometry args={[
-                        boxControl.radius,
-                        boxControl.segments,
-                        THREE.MathUtils.degToRad(boxControl.thetaStart),
-                        THREE.MathUtils.degToRad(boxControl.thetaLength)
-                        ]}/>
-                    <meshStandardMaterial wireframe/>
+            <directionalLight position={[5, 5, 5]} intensity={5} />
+            {/* <fog attach={"fog"} args={["blue", 3,10]} />  안개*/}
+            <mesh
+                ref={meshRef}
+                position={[0, 0, 0]}
+            >
+                <sphereGeometry args={[1,32,16]} />
+
+                {/* 빛의 영향을 받지 않는 메테리얼 */}
+                <meshBasicMaterial color="green" visible={false}/>
+            </mesh>
+
+            <group ref={groupRef}>
+
+                <mesh>
+                    <meshBasicMaterial
+                        wireframe
+                        color="green"
+                    />
+                </mesh>
+
+                <mesh>
+                    <meshBasicMaterial
+                        color="red"
+                        visible={true}
+                        transparent={false}
+                        opacity={1}
+                        side={THREE.DoubleSide}
+                        alphaTest={1}
+                        depthTest={true}
+                        depthWrite={false}
+                        fog={false}
+                    />
                 </mesh>
 
                 <mesh
-                    ref={boxCopyRef}
                 >
-                    <meshStandardMaterial color="red" />
+                    <meshLambertMaterial
+                        color="red"
+                        visible={true}
+                        transparent={false}
+                        opacity={1}
+                        side={THREE.DoubleSide}
+                        alphaTest={1}
+                        depthTest={true}
+                        depthWrite={false}
+                        fog={false}
+
+                        emissive={"black"}
+                    />
                 </mesh>
+
+
+                <mesh
+                >
+                    <meshPhongMaterial 
+                        color="red"
+                        visible={true}
+                        transparent={false}
+                        opacity={1}
+                        side={THREE.DoubleSide}
+                        alphaTest={1}
+                        depthTest={true}
+                        depthWrite={false}
+                        fog={false}
+
+
+                        emissive={"black"}
+
+                        specular={'#fff'}
+                        shininess={100}
+                        flatShading={false}
+                    />
+                </mesh>
+
+
+                <mesh>
+                    <meshNormalMaterial />
+                </mesh>
+            </group>
+
         </>
     )
 }
 
-// regecy
+
+//써클
+// export default function ThreeElement() {
+
+//     // useRef 를 통해 box의 레퍼런스를 기억해둔다
+//     const boxRef = useRef<THREE.Mesh>(null);
+//     const boxCopyRef = useRef<THREE.Mesh>(null);
+//     const boxControl = useControls({
+//         radius : { value:1, min:0.1, max:10, step:0.1},
+//         segments :{ value:32, min:1, max:100, step:1},
+//         thetaStart :{ value:0, min:0, max:360, step:0.1},
+//         thetaLength :{ value:360, min:0, max:360, step:0.1},
+//     })
+
+//     useEffect(() => {
+//         boxCopyRef.current.geometry = boxRef.current.geometry
+//     }, [boxControl])
+
+
+//     return (
+//         <>
+//             {/* 빛 관련 부분 */}
+//             <directionalLight position={[5, 5, 5]} />
+//                 <mesh
+//                     ref={boxRef}
+//                     position={[0, 0, 0]} // mesh 위치변경 x,y,z
+//                     // position-x={[5]} 축 하나씩 이동
+//                     // scale={[1, 1, 1]} //크기변경 x,y,z
+//                     // rotation={[
+//                     //     THREE.MathUtils.degToRad(0),
+//                     //     THREE.MathUtils.degToRad(0),
+//                     //     THREE.MathUtils.degToRad(0),
+//                     // ]}
+//                 >
+//                     <circleGeometry args={[
+//                         boxControl.radius,
+//                         boxControl.segments,
+//                         THREE.MathUtils.degToRad(boxControl.thetaStart),
+//                         THREE.MathUtils.degToRad(boxControl.thetaLength)
+//                         ]}/>
+//                     <meshStandardMaterial wireframe/>
+//                 </mesh>
+
+//                 <mesh
+//                     ref={boxCopyRef}
+//                 >
+//                     <meshStandardMaterial color="red" />
+//                 </mesh>
+//         </>
+//     )
+// }
+
+// 박스
 // export default function ThreeElement() {
 
 //     const { size, gl, scene, camera } = useThree();
