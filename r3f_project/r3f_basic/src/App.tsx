@@ -10,12 +10,12 @@ function App() {
   return (
     <>
     <Canvas
-      // camera={{
-      //   near:1,
-      //   far:40,
-      //   fov:75, 
-      //   position :[5,5,5]
-      // }}
+      camera={{
+        near:1,
+        far:40,
+        fov:75, 
+        position :[5,5,5]
+      }}
     >
       {/* color => 컨버스 색 변경 */}
       <color attach="background" args={["white"]} /> 

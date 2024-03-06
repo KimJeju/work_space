@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useEffect, useRef } from 'react';
+import { useControls } from 'leva'
+import { useTexture } from '@react-three/drei';
 
 
 export default function ThreeElement() {
@@ -8,22 +10,31 @@ export default function ThreeElement() {
 
     const meshRef = useRef<THREE.Mesh>(null);
     const groupRef = useRef<THREE.Group>(null);
-    // const meshCopyRef1 = useRef<THREE.Mesh>(null);
-    // const meshCopyRef2 = useRef<THREE.Mesh>(null);
 
+
+    const controls = useControls({
+        thinkness:{value : 0.1, min:0.1, max:10, step:0.1}
+    })
+
+    const matcap = useTexture('./imgs/matcap1.jpg')  //맥캡 텍스쳐 이미지 가져오기
 
     useFrame((state, delta) => {
-        for(let i = 0; i < groupRef.current!.children.length; ++i){
-            const mesh =  groupRef.current!.children[i] as THREE.Mesh;
-            mesh.geometry = meshRef.current!.geometry;
-            mesh.position.x= i * 2;
-        }
+      
     })
 
     useEffect(() => {
-        // meshCopyRef1.current!.geometry = meshRef.current!.geometry
-        // meshCopyRef2.current!.geometry = meshRef.current!.geometry
-    }, [meshRef])
+
+        //그룹 데터리얼 공유 및 칸이동
+        const meshLength = groupRef.current!.children.length;
+        for(let i = 0; i < groupRef.current!.children.length; ++i){
+            const mesh =  groupRef.current!.children[i] as THREE.Mesh;
+            mesh.geometry = meshRef.current!.geometry;
+            mesh.position.x= i % (meshLength/2) * 2 - 4; //앞뒤열 mesh 곂침
+            if(i >= meshLength/2){
+                mesh.position.z = 2;
+            }
+        }
+    }, [])
 
 
     return (
@@ -35,10 +46,10 @@ export default function ThreeElement() {
                 ref={meshRef}
                 position={[0, 0, 0]}
             >
-                <sphereGeometry args={[1,32,16]} />
+                <torusKnotGeometry args={[0.5,0.2]} />
 
                 {/* 빛의 영향을 받지 않는 메테리얼 */}
-                <meshBasicMaterial color="green" visible={false}/>
+                <meshBasicMaterial  visible={false}/>
             </mesh>
 
             <group ref={groupRef}>
@@ -107,6 +118,70 @@ export default function ThreeElement() {
 
                 <mesh>
                     <meshNormalMaterial />
+                </mesh>
+
+                <mesh>
+                    {/* 금속성 */}
+                    <meshStandardMaterial 
+                         color="red"
+                         visible={true}
+                         transparent={false}
+                         opacity={1}
+                         side={THREE.DoubleSide}
+                         alphaTest={1}
+                         depthTest={true}
+                         depthWrite={false}
+                         fog={false}
+
+                         emissive={"black"}
+
+                         roughness={1} //거칠기
+                         metalness={5} //금속성
+                        //  flatShading={false}
+                    />
+                </mesh>
+
+                <mesh>
+                    <meshPhysicalMaterial 
+                         color="#fff"
+                         visible={true}
+                         transparent={true}
+                         opacity={1}
+                         side={THREE.DoubleSide}
+                         alphaTest={1}
+                         depthTest={true}
+                         depthWrite={true}
+                         fog={true}
+
+                         emissive={"black"}
+
+                         roughness={1} //거칠기
+                         metalness={0} //금속성
+                         clearcoat={5} //표면 코팅
+                         clearcoatRoughness={5} // 코팅 거칠기
+                        //  flatShading={false}
+
+                        transmission={1}
+                        thickness={controls.thinkness}
+                        ior={2.33}
+                    />
+                </mesh>
+
+                <mesh>
+                    <meshDepthMaterial />
+                </mesh>
+
+                <mesh>
+                    <meshMatcapMaterial
+                     matcap={matcap} 
+                     flatShading={false}
+                     />
+                </mesh>
+
+                <mesh>
+                    <meshToonMaterial
+
+                    />
                 </mesh>
             </group>
 
