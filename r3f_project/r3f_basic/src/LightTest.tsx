@@ -1,8 +1,7 @@
 import * as THREE from 'three'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, } from '@react-three/fiber'
 import { useEffect, useRef } from 'react';
-import { useControls } from 'leva'
-import { useTexture } from '@react-three/drei';
+import { useTexture, useHelper, Environment } from '@react-three/drei';
 
 
 export default function LightTest() {
@@ -12,11 +11,12 @@ export default function LightTest() {
     const groupRef = useRef<THREE.Group>(null);
 
 
-    const controls = useControls({
-        thinkness:{value : 0.1, min:0.1, max:10, step:0.1}
-    })
-
     const matcap = useTexture('./imgs/matcap1.jpg')  //맥캡 텍스쳐 이미지 가져오기
+    const dLight = useRef<THREE.DirectionalLight>(null!);
+    useHelper(dLight, THREE.DirectionalLightHelper)
+
+    const sLight = useRef<THREE.SpotLight>(null!);
+    useHelper(sLight, THREE.SpotLightHelper)
 
     useFrame((state, delta) => {
       
@@ -29,7 +29,7 @@ export default function LightTest() {
         for(let i = 0; i < groupRef.current!.children.length; ++i){
             const mesh =  groupRef.current!.children[i] as THREE.Mesh;
             mesh.geometry = meshRef.current!.geometry;
-            mesh.position.x= i % (meshLength/2) * 2 - 4; //앞뒤열 mesh 곂침
+            mesh.position.x= i % (meshLength/2) * 2 ; //앞뒤열 mesh 곂침
             if(i >= meshLength/2){
                 mesh.position.z = 2;
             }
@@ -40,8 +40,60 @@ export default function LightTest() {
     return (
         <>
             {/* 빛 관련 부분 */}
-            <directionalLight position={[5, 5, 5]} intensity={5} />
+            {/* <directionalLight position={[5, 5, 5]} intensity={5} /> */}
             {/* <fog attach={"fog"} args={["blue", 3,10]} />  안개*/}
+
+            {/* 주변광, 간접광 */}
+            {/* <ambientLight color={'#fff'} intensity={1}/>  */}
+
+            {/* args => 위쪽 빛, 아래쪽 빛, 강도 
+             주변광, 간접광 ( 색 2개 )
+             돔라이트 ( 하늘색깔조명, 바닥 색깔 조명 )
+            */}
+            {/* <hemisphereLight args={["blue", "yellow", 2]}/> */}
+            
+            {/* 햇빛 ( 방향성이 있는 빛 ) */}
+            {/* <directionalLight 
+                ref={dLight}
+                color={'#fff'} 
+                position={[5,5,-5]} // 빛의 위치
+                intensity={5} 
+                target-position={[2,0,0]} //빛을 비추는 방향
+                /> */}
+            
+
+            {/* 가운데 부터 퍼지는 빛
+            <pointLight 
+                color={'#fff'} 
+                position={[0,0,2]} // 빛의 위치
+                intensity={5}  //강도 
+                distance={5} //거리
+            /> */}
+
+            {/* <spotLight 
+                ref={sLight}
+                color={'#fff'} 
+                position={[0,5,0]} // 빛의 위치
+                intensity={300}  //강도 
+                distance={300} //거리
+                angle={THREE.MathUtils.degToRad(40)} //빛을 비추는 강도
+                penumbra={0.5} // 빛의 가장 자리가 비추는 정도 0 ~ 1
+            /> */}
+
+            <Environment
+                files={'./imgs/hdr1.hdr'}
+                background
+                blur={0}
+            />
+        
+            <mesh 
+                rotation-x={THREE.MathUtils.degToRad(-90)}
+                position-y={-1}
+                >
+                <planeGeometry args={[15,15]} />
+                <meshStandardMaterial color={'blue'} side={THREE.DoubleSide} />
+            </mesh>
+
             <mesh
                 ref={meshRef}
                 position={[0, 0, 0]}
@@ -54,26 +106,7 @@ export default function LightTest() {
 
             <group ref={groupRef}>
 
-                <mesh>
-                    <meshBasicMaterial
-                        wireframe
-                        color="green"
-                    />
-                </mesh>
-
-                <mesh>
-                    <meshBasicMaterial
-                        color="red"
-                        visible={true}
-                        transparent={false}
-                        opacity={1}
-                        side={THREE.DoubleSide}
-                        alphaTest={1}
-                        depthTest={true}
-                        depthWrite={false}
-                        fog={false}
-                    />
-                </mesh>
+          
 
                 <mesh
                 >
@@ -113,11 +146,6 @@ export default function LightTest() {
                         shininess={100}
                         flatShading={false}
                     />
-                </mesh>
-
-
-                <mesh>
-                    <meshNormalMaterial />
                 </mesh>
 
                 <mesh>
@@ -162,21 +190,11 @@ export default function LightTest() {
                         //  flatShading={false}
 
                         transmission={1}
-                        thickness={controls.thinkness}
                         ior={2.33}
                     />
                 </mesh>
 
-                <mesh>
-                    <meshDepthMaterial />
-                </mesh>
-
-                <mesh>
-                    <meshMatcapMaterial
-                     matcap={matcap} 
-                     flatShading={false}
-                     />
-                </mesh>
+          
 
                 <mesh>
                     <meshToonMaterial

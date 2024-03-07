@@ -18,11 +18,11 @@ function App() {
       }}
     >
       {/* color => 컨버스 색 변경 */}
-      <color attach="background" args={["white"]} /> 
+      <color attach="background" args={["black"]} /> 
       <OrbitControls 
       />  
-      <axesHelper args={[6]}/>
-      <gridHelper args={[10, 10]} />
+      {/* <axesHelper args={[6]}/>
+      <gridHelper args={[10, 10]} /> */}
       <LightTest />
     </Canvas>
     </>
