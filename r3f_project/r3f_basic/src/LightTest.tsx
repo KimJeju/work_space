@@ -5,7 +5,7 @@ import { useControls } from 'leva'
 import { useTexture } from '@react-three/drei';
 
 
-export default function ThreeElement() {
+export default function LightTest() {
 
 
     const meshRef = useRef<THREE.Mesh>(null);

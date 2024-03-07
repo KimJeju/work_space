@@ -1,6 +1,6 @@
 import './App.css'
 import { Canvas } from '@react-three/fiber'
-import ThreeElement from './ThreeElement'
+import LightTest from './LightTest'
 import { OrbitControls } from '@react-three/drei'
 
 // Three.js 단위  => 미터
@@ -23,7 +23,7 @@ function App() {
       />  
       <axesHelper args={[6]}/>
       <gridHelper args={[10, 10]} />
-      <ThreeElement />
+      <LightTest />
     </Canvas>
     </>
   )
