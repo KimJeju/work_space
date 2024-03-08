@@ -2,6 +2,10 @@ import './App.css'
 import { Canvas } from '@react-three/fiber'
 import LightTest from './LightTest'
 import { OrbitControls } from '@react-three/drei'
+import InterectionTest from './InterectionTest'
+
+
+
 
 // Three.js 단위  => 미터
 function App() {
@@ -10,6 +14,7 @@ function App() {
   return (
     <>
     <Canvas
+      shadows={true}
       camera={{
         near:1,
         far:40,
@@ -21,9 +26,10 @@ function App() {
       <color attach="background" args={["black"]} /> 
       <OrbitControls 
       />  
-      {/* <axesHelper args={[6]}/>
-      <gridHelper args={[10, 10]} /> */}
-      <LightTest />
+      <axesHelper args={[6]}/>
+      <gridHelper args={[10, 10]} />
+      {/* <LightTest /> */}
+      <InterectionTest />
     </Canvas>
     </>
   )

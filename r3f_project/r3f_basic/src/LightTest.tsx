@@ -29,7 +29,7 @@ export default function LightTest() {
         for(let i = 0; i < groupRef.current!.children.length; ++i){
             const mesh =  groupRef.current!.children[i] as THREE.Mesh;
             mesh.geometry = meshRef.current!.geometry;
-            mesh.position.x= i % (meshLength/2) * 2 ; //앞뒤열 mesh 곂침
+            mesh.position.x= i % (meshLength/2) * 2 - 4 ; //앞뒤열 mesh 곂침
             if(i >= meshLength/2){
                 mesh.position.z = 2;
             }
@@ -53,13 +53,20 @@ export default function LightTest() {
             {/* <hemisphereLight args={["blue", "yellow", 2]}/> */}
             
             {/* 햇빛 ( 방향성이 있는 빛 ) */}
-            {/* <directionalLight 
+            <directionalLight 
+                castShadow // 그림자 속성
                 ref={dLight}
                 color={'#fff'} 
                 position={[5,5,-5]} // 빛의 위치
                 intensity={5} 
                 target-position={[2,0,0]} //빛을 비추는 방향
-                /> */}
+                shadow-camera-top={10}
+                shadow-camera-bottom={-10}
+                shadow-camera-left={-10}
+                shadow-camera-right={10}
+
+                shadow-mapSize = {[512,512]} //그림자 뚜렷도
+                />
             
 
             {/* 가운데 부터 퍼지는 빛
@@ -80,15 +87,16 @@ export default function LightTest() {
                 penumbra={0.5} // 빛의 가장 자리가 비추는 정도 0 ~ 1
             /> */}
 
-            <Environment
+            {/* <Environment
                 files={'./imgs/hdr1.hdr'}
                 background
                 blur={0}
-            />
+            /> */}
         
             <mesh 
                 rotation-x={THREE.MathUtils.degToRad(-90)}
                 position-y={-1}
+                receiveShadow // 바닥에 그림자 추가
                 >
                 <planeGeometry args={[15,15]} />
                 <meshStandardMaterial color={'blue'} side={THREE.DoubleSide} />
@@ -109,6 +117,8 @@ export default function LightTest() {
           
 
                 <mesh
+                    castShadow //나에 매쉬에 그림자 생성
+                    receiveShadow // 내 뒷쪽에 매쉬도 그림자 적용
                 >
                     <meshLambertMaterial
                         color="red"
@@ -127,6 +137,8 @@ export default function LightTest() {
 
 
                 <mesh
+                   castShadow //나에 매쉬에 그림자 생성
+                   receiveShadow // 내 뒷쪽에 매쉬도 그림자 적용
                 >
                     <meshPhongMaterial 
                         color="red"
@@ -148,7 +160,10 @@ export default function LightTest() {
                     />
                 </mesh>
 
-                <mesh>
+                <mesh
+                   castShadow //나에 매쉬에 그림자 생성
+                   receiveShadow // 내 뒷쪽에 매쉬도 그림자 적용
+                >
                     {/* 금속성 */}
                     <meshStandardMaterial 
                          color="red"
@@ -169,36 +184,39 @@ export default function LightTest() {
                     />
                 </mesh>
 
-                <mesh>
+                <mesh
+                    castShadow
+                    receiveShadow
+                >
                     <meshPhysicalMaterial 
-                         color="#fff"
-                         visible={true}
-                         transparent={true}
-                         opacity={1}
-                         side={THREE.DoubleSide}
-                         alphaTest={1}
-                         depthTest={true}
-                         depthWrite={true}
-                         fog={true}
+                        color="#fff"
+                        visible={true}
+                        transparent={true}
+                        opacity={1}
+                        side={THREE.FrontSide}
+                        alphaTest={1}
+                        depthTest={true}
+                        depthWrite={true}
+                        fog={true}
 
-                         emissive={"black"}
-
-                         roughness={1} //거칠기
-                         metalness={0} //금속성
-                         clearcoat={5} //표면 코팅
-                         clearcoatRoughness={5} // 코팅 거칠기
-                        //  flatShading={false}
+                        emissive={'black'}
+                        roughness={0}
+                        metalness={0}
+                        clearcoat={0}
+                        clearcoatRoughness={0}
 
                         transmission={1}
+                        thickness={0.5}
                         ior={2.33}
+                        // flatShading={true}
                     />
                 </mesh>
 
-          
-
-                <mesh>
+                <mesh
+                   castShadow //나에 매쉬에 그림자 생성
+                   receiveShadow // 내 뒷쪽에 매쉬도 그림자 적용
+                >
                     <meshToonMaterial
-
                     />
                 </mesh>
             </group>
