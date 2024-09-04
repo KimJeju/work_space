@@ -1,3 +1,9 @@
-export default function test(){
-    return <h2>hello world</h2>
+import Navigation from "../components/navigation";
+
+export default function RootPage(){
+    return (
+        <div>
+            <h2>hello</h2>
+        </div>
+    )
 }
