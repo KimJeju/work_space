@@ -1,4 +1,4 @@
-import { API_URL } from "../app/(home)/page";
+import { API_URL } from '../app/constants';
 import style from '../style/movie-video.module.css';
 
 
